@@ -1,107 +1,447 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HalimeClinic - Cirugía Estética en Turquía</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  body {margin:0; font-family:'Montserrat', sans-serif; background:#f9f9f9; color:#333;}
-  a {text-decoration:none;}
-  
-  /* Header */
-  .header {background:#25D366; color:#fff; padding:20px; text-align:center;}
-  .header h1 {margin:0; font-size:28px;}
-  
-  /* Hero */
-  .hero {position:relative; background:url('https://images.unsplash.com/photo-1588776814546-849e3302d1ec?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover; height:400px; display:flex; align-items:center; justify-content:center;}
-  .hero-overlay {background:rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0;}
-  .hero-content {position:relative; text-align:center; color:#fff;}
-  .hero-content h2 {font-size:32px; margin-bottom:20px;}
-  .hero-content a {background:#fff; color:#25D366; padding:18px 35px; font-weight:600; border-radius:50px; font-size:18px; transition:0.3s;}
-  .hero-content a:hover {background:#25D366; color:#fff;}
-  
-  /* Sections */
-  .section {padding:60px 20px; text-align:center; max-width:1000px; margin:0 auto;}
-  .section h2 {font-size:28px; margin-bottom:30px;}
-  .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-  .card {background:#fff; border-radius:12px; padding:20px; flex:1 1 250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-  .card img {width:100%; border-radius:12px; margin-bottom:15px;}
-  .card h3 {font-size:20px; margin-bottom:10px;}
-  .card p {font-size:16px; color:#555;}
-  
-  /* Footer */
-  footer {background:#eee; text-align:center; padding:20px; font-size:14px; color:#555;}
-  
-  @media(max-width:768px){
-    .hero {height:300px;}
-    .hero-content h2 {font-size:24px;}
-    .hero-content a {font-size:16px; padding:14px 25px;}
-    .cards {flex-direction:column;}
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halime Clinic — Cirugía Estética en Estambul</title>
+  <meta name="description" content="Cirugía estética de clase mundial en Estambul, Turquía. Rinoplastia, BBL, Liposucción, Lifting de Brazos y Aumento de Senos. Halime Clinic." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            cream: '#EDE9E1',
+            forest: '#2D4A1E',
+            'forest-light': '#4A7A30',
+            'forest-muted': '#6B8F5A',
+          },
+          keyframes: {
+            'pulse-glow': {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(45,74,30,0.4)' },
+              '50%': { boxShadow: '0 0 0 12px rgba(45,74,30,0)' },
+            },
+            'fade-up': {
+              from: { opacity: '0', transform: 'translateY(30px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            }
+          },
+          animation: {
+            'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+            'fade-up': 'fade-up 0.8s ease-out forwards',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #EDE9E1; color: #2D4A1E; }
+    .font-heading { font-family: 'Playfair Display', serif; }
+    .hero-bg {
+      background-image: linear-gradient(to right, rgba(20,35,12,0.75) 0%, rgba(20,35,12,0.45) 60%, rgba(20,35,12,0.25) 100%),
+        url('https://media.base44.com/images/public/69caf0a694b8a062619133b0/db3da0a64_generated_d78f70ed.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .istanbul-bg {
+      background-image: linear-gradient(rgba(20,35,12,0.72), rgba(20,35,12,0.72)),
+        url('https://media.base44.com/images/public/69caf0a694b8a062619133b0/9cfbcae9c_generated_8b13d126.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .procedure-card:hover .procedure-overlay { opacity: 1; }
+    .procedure-card:hover img { transform: scale(1.05); }
+    .procedure-overlay { opacity: 0; transition: opacity 0.4s ease; }
+    .procedure-card img { transition: transform 0.6s ease; }
+    nav.scrolled { background: rgba(237,233,225,0.92); backdrop-filter: blur(16px); box-shadow: 0 1px 12px rgba(45,74,30,0.08); border-bottom: 1px solid rgba(45,74,30,0.1); }
+    .whatsapp-btn { animation: pulse-glow 2s ease-in-out infinite; }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(45,74,30,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(45,74,30,0); }
+    }
+    .slide-item { display: none; }
+    .slide-item.active { display: block; }
+    .gallery-img { animation: fade-in 0.5s ease; }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+  </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-<div class="header">
-  <h1>HalimeClinic - Cirugía Estética en Turquía</h1>
-</div>
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/d66171b3a_IMG_4892.jpg"
+          alt="Halime Clinic Logo" class="h-10 w-10 object-contain rounded-full" />
+        <span class="font-heading text-xl lg:text-2xl font-semibold text-white" id="nav-brand">
+          Halime <span style="color:#8db870">Clinic</span>
+        </span>
+      </a>
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#procedimientos" class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Procedimientos</a>
+        <a href="#instalaciones" class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Instalaciones</a>
+        <a href="#istanbul" class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Estambul</a>
+        <a href="https://wa.me/971543579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20en%20Estambul."
+          target="_blank"
+          class="bg-forest text-cream text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-forest-light transition-colors">
+          Consulta Gratis
+        </a>
+      </div>
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden text-white" onclick="toggleMenu()">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-cream/95 backdrop-blur-xl border-b border-forest/10 px-6 py-6 flex flex-col gap-4">
+      <a href="#procedimientos" onclick="toggleMenu()" class="text-base font-medium text-forest">Procedimientos</a>
+      <a href="#instalaciones" onclick="toggleMenu()" class="text-base font-medium text-forest">Instalaciones</a>
+      <a href="#istanbul" onclick="toggleMenu()" class="text-base font-medium text-forest">Estambul</a>
+      <a href="https://wa.me/971543579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20en%20Estambul."
+        target="_blank"
+        class="bg-forest text-cream text-center font-semibold px-5 py-3 rounded-full mt-2">
+        Consulta Gratis
+      </a>
+    </div>
+  </nav>
 
-<div class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h2>Transforma tu cuerpo con seguridad</h2>
-    <!-- Botón seguro que abre WhatsApp al hacer clic -->
-    <a href="https://wa.me/971543579634?text=Hola,%20quiero%20información%20sobre%20liposucción" target="_blank">Chatea por WhatsApp</a>
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg relative min-h-screen flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-36 w-full">
+      <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color:#8db870">Estambul, Turquía</p>
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight max-w-2xl">
+        Tu Transformación <em style="color:#8db870">Comienza</em> Aquí
+      </h1>
+      <p class="mt-6 text-lg text-white/80 leading-relaxed max-w-lg">
+        Cirugía estética de clase mundial en instalaciones de lujo. Resultados naturales, recuperación premium y la magia de Estambul.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="https://wa.me/971543579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20cirug%C3%ADa%20est%C3%A9tica%20en%20Estambul."
+          target="_blank"
+          class="whatsapp-btn inline-flex items-center justify-center gap-2 bg-forest text-cream font-semibold px-8 py-4 rounded-full text-base hover:bg-forest-light transition-colors">
+          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consulta Gratuita
+        </a>
+        <a href="#procedimientos" class="inline-flex items-center justify-center border border-white/30 text-white font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors">
+          Ver Procedimientos
+        </a>
+      </div>
+      <!-- Trust badges -->
+      <div class="mt-16 flex flex-wrap gap-4">
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/15 rounded-full px-5 py-2.5">
+          <svg class="w-4 h-4" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-white/90 text-sm font-medium">Clínica Certificada JCI</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/15 rounded-full px-5 py-2.5">
+          <svg class="w-4 h-4" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          <span class="text-white/90 text-sm font-medium">Excelencia Internacional</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/15 rounded-full px-5 py-2.5">
+          <svg class="w-4 h-4" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <span class="text-white/90 text-sm font-medium">+5,000 Pacientes Satisfechos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCEDURES ===== -->
+  <section id="procedimientos" class="py-24 lg:py-32" style="background:#EDE9E1">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#4A7A30">Nuestros Procedimientos</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold" style="color:#2D4A1E">Excelencia en Cada <em>Detalle</em></h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg" style="color:#6B8F5A">Cada procedimiento es una obra maestra personalizada, ejecutada con precisión quirúrgica y tecnología de última generación.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+        <!-- Rinoplastia -->
+        <div class="procedure-card relative bg-white rounded-2xl overflow-hidden border cursor-pointer" style="border-color:#d4cfc6">
+          <div class="relative overflow-hidden" style="aspect-ratio:3/4">
+            <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/59d371d55_generated_4e637259.png" alt="Rinoplastia" class="w-full h-full object-cover" />
+            <div class="procedure-overlay absolute inset-0 flex flex-col justify-end p-5" style="background:linear-gradient(to top, rgba(20,35,12,0.9) 0%, rgba(20,35,12,0.3) 60%, transparent 100%)">
+              <p class="text-white/80 text-sm leading-relaxed mb-3">Armonía facial perfecta con técnicas mínimamente invasivas y resultados naturales.</p>
+              <a href="https://wa.me/971543579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20Rinoplastia%20en%20Estambul."
+                target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-cream text-sm font-semibold px-4 py-2.5 rounded-full w-full" style="background:#2D4A1E">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Consultar
+              </a>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-heading text-lg font-semibold" style="color:#2D4A1E">Rinoplastia</h3></div>
+        </div>
+
+        <!-- BBL -->
+        <div class="procedure-card relative bg-white rounded-2xl overflow-hidden border cursor-pointer" style="border-color:#d4cfc6">
+          <div class="relative overflow-hidden" style="aspect-ratio:3/4">
+            <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/6b48a435d_generated_9a11db7f.png" alt="BBL" class="w-full h-full object-cover" />
+            <div class="procedure-overlay absolute inset-0 flex flex-col justify-end p-5" style="background:linear-gradient(to top, rgba(20,35,12,0.9) 0%, rgba(20,35,12,0.3) 60%, transparent 100%)">
+              <p class="text-white/80 text-sm leading-relaxed mb-3">Brazilian Butt Lift con transferencia de grasa autóloga y resultados naturales.</p>
+              <a href="https://wa.me/9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20BBL%20en%20Estambul."
+                target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-cream text-sm font-semibold px-4 py-2.5 rounded-full w-full" style="background:#2D4A1E">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Consultar
+              </a>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-heading text-lg font-semibold" style="color:#2D4A1E">BBL</h3></div>
+        </div>
+
+        <!-- Liposucción -->
+        <div class="procedure-card relative bg-white rounded-2xl overflow-hidden border cursor-pointer" style="border-color:#d4cfc6">
+          <div class="relative overflow-hidden" style="aspect-ratio:3/4">
+            <img src="https://static.wixstatic.com/media/12d367_4f26ccd17f8f4e3a8958306ea08c2332~mv2.png" alt="Liposucción" class="w-full h-full object-cover" />
+            <div class="procedure-overlay absolute inset-0 flex flex-col justify-end p-5" style="background:linear-gradient(to top, rgba(20,35,12,0.9) 0%, rgba(20,35,12,0.3) 60%, transparent 100%)">
+              <p class="text-white/80 text-sm leading-relaxed mb-3">Escultura corporal de precisión para revelar tus contornos naturales.</p>
+              <a href="https://wa.me/9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20Liposucción%20en%20Estambul."
+                target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-cream text-sm font-semibold px-4 py-2.5 rounded-full w-full" style="background:#2D4A1E">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Consultar
+              </a>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-heading text-lg font-semibold" style="color:#2D4A1E">Liposucción</h3></div>
+        </div>
+
+        <!-- Lifting de Brazos -->
+        <div class="procedure-card relative bg-white rounded-2xl overflow-hidden border cursor-pointer" style="border-color:#d4cfc6">
+          <div class="relative overflow-hidden" style="aspect-ratio:3/4">
+            <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/46d6b5d0c_generated_3cb09622.png" alt="Lifting de Brazos" class="w-full h-full object-cover" />
+            <div class="procedure-overlay absolute inset-0 flex flex-col justify-end p-5" style="background:linear-gradient(to top, rgba(20,35,12,0.9) 0%, rgba(20,35,12,0.3) 60%, transparent 100%)">
+              <p class="text-white/80 text-sm leading-relaxed mb-3">Braquioplastia experta para brazos tonificados con cicatrices mínimas.</p>
+              <a href="https://wa.me/9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20Lifting%20de%20Brazos%20en%20Estambul."
+                target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-cream text-sm font-semibold px-4 py-2.5 rounded-full w-full" style="background:#2D4A1E">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Consultar
+              </a>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-heading text-lg font-semibold" style="color:#2D4A1E">Lifting de Brazos</h3></div>
+        </div>
+
+        <!-- Aumento de Senos -->
+        <div class="procedure-card relative bg-white rounded-2xl overflow-hidden border cursor-pointer" style="border-color:#d4cfc6">
+          <div class="relative overflow-hidden" style="aspect-ratio:3/4">
+            <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/c92a144e8_generated_6133ace8.png" alt="Aumento de Senos" class="w-full h-full object-cover" />
+            <div class="procedure-overlay absolute inset-0 flex flex-col justify-end p-5" style="background:linear-gradient(to top, rgba(20,35,12,0.9) 0%, rgba(20,35,12,0.3) 60%, transparent 100%)">
+              <p class="text-white/80 text-sm leading-relaxed mb-3">Resultados naturales y armoniosos con implantes de última generación.</p>
+              <a href="https://wa.me/9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20Aumento%20de%20Senos%20en%20Estambul."
+                target="_blank"
+                class="inline-flex items-center justify-center gap-2 text-cream text-sm font-semibold px-4 py-2.5 rounded-full w-full" style="background:#2D4A1E">
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Consultar
+              </a>
+            </div>
+          </div>
+          <div class="p-4"><h3 class="font-heading text-lg font-semibold" style="color:#2D4A1E">Aumento de Senos</h3></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACILITY GALLERY ===== -->
+  <section id="instalaciones" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#4A7A30">Nuestras Instalaciones</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold" style="color:#2D4A1E">Un Santuario de <em>Excelencia</em></h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg" style="color:#6B8F5A">Instalaciones de lujo diseñadas para tu comodidad y seguridad, equipadas con la más avanzada tecnología médica.</p>
+      </div>
+      <!-- Slider -->
+      <div class="relative rounded-2xl overflow-hidden bg-gray-100" style="aspect-ratio:16/9">
+        <div class="slide-item active gallery-img absolute inset-0">
+          <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/db3da0a64_generated_d78f70ed.png" alt="Lobby Principal" class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8" style="background:linear-gradient(to top, rgba(20,35,12,0.7), transparent)">
+            <p class="text-white font-heading text-xl lg:text-2xl font-semibold">Lobby Principal del Centro Médico</p>
+          </div>
+        </div>
+        <div class="slide-item gallery-img absolute inset-0">
+          <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/456cfcab3_generated_f9e069a1.png" alt="Quirófano" class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8" style="background:linear-gradient(to top, rgba(20,35,12,0.7), transparent)">
+            <p class="text-white font-heading text-xl lg:text-2xl font-semibold">Quirófano de Alta Tecnología</p>
+          </div>
+        </div>
+        <div class="slide-item gallery-img absolute inset-0">
+          <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/2954e8200_generated_c19e2844.png" alt="Suite VIP" class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8" style="background:linear-gradient(to top, rgba(20,35,12,0.7), transparent)">
+            <p class="text-white font-heading text-xl lg:text-2xl font-semibold">Suite de Recuperación VIP</p>
+          </div>
+        </div>
+        <div class="slide-item gallery-img absolute inset-0">
+          <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/0ca64145c_generated_7dac0617.png" alt="Consultas" class="w-full h-full object-cover" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8" style="background:linear-gradient(to top, rgba(20,35,12,0.7), transparent)">
+            <p class="text-white font-heading text-xl lg:text-2xl font-semibold">Sala de Consultas Privada</p>
+          </div>
+        </div>
+        <!-- Nav buttons -->
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2.5 transition-colors" style="background:rgba(255,255,255,0.2);backdrop-filter:blur(8px)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2.5 transition-colors" style="background:rgba(255,255,255,0.2);backdrop-filter:blur(8px)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <!-- Dots -->
+        <div id="dots" class="absolute bottom-4 right-6 flex gap-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ISTANBUL ===== -->
+  <section id="istanbul" class="istanbul-bg relative py-24 lg:py-32">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color:#8db870">Tu Destino</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Estambul: Donde el Arte <em>Encuentra</em> la Medicina</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/70">Combina tu transformación con una experiencia única en una de las ciudades más fascinantes del mundo.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15)">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(141,184,112,0.2)">
+            <svg class="w-6 h-6" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-white mb-3">Traslados VIP</h3>
+          <p class="text-white/70 leading-relaxed">Recogida en el aeropuerto, transporte privado y asistente personal durante toda tu estancia.</p>
+        </div>
+        <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15)">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(141,184,112,0.2)">
+            <svg class="w-6 h-6" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-white mb-3">Recuperación de Lujo</h3>
+          <p class="text-white/70 leading-relaxed">Suites privadas con vista al Bósforo, atención 24/7 y servicio de concierge personalizado.</p>
+        </div>
+        <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15)">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(141,184,112,0.2)">
+            <svg class="w-6 h-6" style="color:#8db870" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-white mb-3">Experiencia Estambul</h3>
+          <p class="text-white/70 leading-relaxed">Tours opcionales por la ciudad, gastronomía local y compras en los mejores distritos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-12 lg:py-16" style="background:#1a2e10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="https://media.base44.com/images/public/69caf0a694b8a062619133b0/d66171b3a_IMG_4892.jpg"
+            alt="Halime Clinic Logo" class="h-10 w-10 object-contain rounded-full opacity-80" style="filter:brightness(0) invert(1)" />
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-white">Halime <span style="color:#8db870">Clinic</span></h3>
+            <p class="text-white/50 text-sm mt-0.5">Cirugía estética de clase mundial en Estambul, Turquía.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6 text-white/50 text-sm">
+          <a href="#procedimientos" class="hover:text-white transition-colors">Procedimientos</a>
+          <a href="#instalaciones" class="hover:text-white transition-colors">Instalaciones</a>
+          <a href="#istanbul" class="hover:text-white transition-colors">Estambul</a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 text-center" style="border-top:1px solid rgba(255,255,255,0.1)">
+        <p class="text-white/30 text-xs">© 2025 Halime Clinic. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING WHATSAPP (Desktop) ===== -->
+  <a href="https://wa.me/T9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20cirug%C3%ADa%20est%C3%A9tica%20en%20Estambul."
+    target="_blank"
+    class="hidden md:flex fixed bottom-8 right-8 z-50 items-center gap-3 text-cream font-semibold pl-6 pr-5 py-4 rounded-full shadow-xl hover:opacity-90 transition-opacity whatsapp-btn"
+    style="background:#2D4A1E;color:#EDE9E1">
+    <span class="text-sm">Consulta por WhatsApp</span>
+    <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.2)">
+      <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </div>
+  </a>
+
+  <!-- ===== STICKY WHATSAPP (Mobile) ===== -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden">
+    <a href="https://wa.me/9713579634?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20consulta%20para%20cirug%C3%ADa%20est%C3%A9tica%20en%20Estambul."
+      target="_blank"
+      class="whatsapp-btn flex items-center justify-center gap-3 w-full font-semibold py-4 rounded-2xl text-base shadow-lg"
+      style="background:#2D4A1E;color:#EDE9E1">
+      <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Inicia Tu Transformación
+    </a>
   </div>
-</div>
 
-<div class="section">
-  <h2>Beneficios de nuestros servicios</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1612197524844-2c9d58e54453?auto=format&fit=crop&w=600&q=80" alt="Atención personalizada">
-      <h3>Atención personalizada</h3>
-      <p>Te acompañamos antes, durante y después de tu cirugía para la mejor experiencia.</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1588776814546-849e3302d1ec?auto=format&fit=crop&w=600&q=80" alt="Especialistas certificados">
-      <h3>Especialistas certificados</h3>
-      <p>Cirujanos con experiencia y certificación internacional para procedimientos seguros.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/600x400/?clinic,medical" alt="Clinica estética">
-      <h3>Resultados confiables</h3>
-      <p>Clínicas equipadas con tecnología avanzada para resultados naturales y duraderos.</p>
-    </div>
-  </div>
-</div>
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const navBrand = document.getElementById('nav-brand');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-<div class="section">
-  <h2>Tipos de procedimientos</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1590080875125-12a3f4876db1?auto=format&fit=crop&w=600&q=80" alt="Liposucción">
-      <h3>Liposucción</h3>
-      <p>Reducción de grasa localizada con resultados precisos y armoniosos.</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1590080875125-12a3f4876db1?auto=format&fit=crop&w=600&q=80" alt="BBL">
-      <h3>BBL</h3>
-      <p>Aumento y modelado de glúteos para una silueta estética.</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1576765607922-8c5d7a5bfe3c?auto=format&fit=crop&w=600&q=80" alt="Abdominoplastia">
-      <h3>Abdominoplastia</h3>
-      <p>Moldeamiento del abdomen para un contorno firme y natural.</p>
-    </div>
-  </div>
-</div>
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+        navBrand.style.color = '#2D4A1E';
+        navLinks.forEach(l => { l.style.color = 'rgba(45,74,30,0.7)'; });
+      } else {
+        navbar.classList.remove('scrolled');
+        navBrand.style.color = 'white';
+        navLinks.forEach(l => { l.style.color = 'rgba(255,255,255,0.8)'; });
+      }
+    });
 
-<footer>
-  Privacidad garantizada. Tus datos no serán compartidos. © Halime Clinic
-</footer>
+    // Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    }
 
+    // Gallery slider
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-item');
+    const dotsContainer = document.getElementById('dots');
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = i === 0
+        ? 'h-2 rounded-full transition-all' : 'w-2 h-2 rounded-full transition-all';
+      dot.style.background = i === 0 ? '#8db870' : 'rgba(255,255,255,0.5)';
+      dot.style.width = i === 0 ? '24px' : '8px';
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      // Update dots
+      dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+        dot.style.background = i === currentSlide ? '#8db870' : 'rgba(255,255,255,0.5)';
+        dot.style.width = i === currentSlide ? '24px' : '8px';
+      });
+    }
+
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+
+    // Auto advance
+    setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
